@@ -39,6 +39,39 @@ To create a OBSRV Cluster please follow the [documentation](https://github.com/m
 ### Longhorn
 * Install [Longhorn](https://github.com/mosip/k8s-infra/blob/main/longhorn/README.md) for persistent storage. OR you can Install Longhorn from RancherUI also.
 
+### NFS
+* Install 
+```bash
+1  lsblk     
+2  sudo lsblk -f     
+3  sudo mkfs -t xfs /dev/nvme1n1     
+4  sudo lsblk -f     
+5  sudo mkdir /srv/nfs     
+6  sudo mount /dev/nvme1n1 /srv/nfs     
+7  df -h     
+9  sudo umount /dev/nvme1n1    
+10  sudo cp /etc/fstab /etc/fstab.orig    
+11  sudo blkid    
+12  sudo vim /etc/fstab
+replace UUID as per yours in above file add below line
+ 
+ UUID=8f944082-dad9-4b7e-9d29-20341906ffeb  /srv/nfs  xfs  defaults,nofail  0  2 
+    
+13  sudo reboot    
+14  df -h    
+15  cd /srv/nfs/    
+16  sudo mkdir mosip
+
+kubectl patch storageclass nfs-client -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
+```
+)  
+
+### Monitoring
+```bash
+helm repo add monitoring https://prometheus-community.github.io/helm-charts
+helm repo update
+```
+
 ### MinIO
 * Install [MinIO](https://github.com/mosip/mosip-infra/tree/master/deployment/v3/external/object-store/minio) for high performance, distributed object storage system.
   - To create minio buckets from CLI, run below command
@@ -85,10 +118,6 @@ helm repo update
 
 ```bash
 helm repo add velero https://vmware-tanzu.github.io/helm-charts
-helm repo update
-```
-```bash
-helm repo add monitoring https://prometheus-community.github.io/helm-charts
 helm repo update
 ```
 ## Source Code
