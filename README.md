@@ -136,7 +136,7 @@ helm upgrade --install --atomic <release_name> <chart_name> -n <namespace> -f <p
 ### Postgres
 Postgres is a RDBMS database which is used as the metadata store
 ```bash
-helm upgrade --install --atomic obsrv-redis redis/redis -n redis -f redis/values.yaml --create-namespace --debug
+helm upgrade --install --atomic postgresql-exporter postgresql_exporter/postgresql-exporter-helm-chart -n postgresql --create-namespace --debug
 ```
 ### Redis
 Redis is an in-memory key-value store primarily used as a distributed cache
