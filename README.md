@@ -64,15 +64,15 @@ replace UUID as per yours in above file add below line
 
 kubectl patch storageclass nfs-client -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
 ```
-)  
 
-### Monitoring
+## Install Monitoring
 ```bash
 helm repo add monitoring https://prometheus-community.github.io/helm-charts
 helm repo update
+helm upgrade --install --atomic monitoring monitoring/kube-prometheus-stack -n monitoring -f monitoring/values.yaml --create-namespace --debug
 ```
 
-### MinIO
+## Install MinIO
 * Install [MinIO](https://github.com/mosip/mosip-infra/tree/master/deployment/v3/external/object-store/minio) for high performance, distributed object storage system.
   - To create minio buckets from CLI, run below command
 ```bash
