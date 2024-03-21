@@ -27,6 +27,7 @@ To create a OBSRV Cluster please follow the [documentation](https://github.com/m
    * druid.sandbox.xyz.net
    * secor.sandbox.xyz.net
    * superset.sandbox.xyz.net
+   * minio.sandbox.xyz.net
 
 ## Istio
 * If you want to go with Istio as a ingress controller, then follow the  [documentation](https://github.com/mosip/k8s-infra/blob/main/mosip/on-prem/istio/README.md)
@@ -68,22 +69,26 @@ helm repo add prometheus https://prometheus-community.github.io/helm-charts
 helm repo update
 ```
 ```bash
-helm repo add https://charts.bitnami.com/bitnami
+helm repo add redis https://charts.bitnami.com/bitnami
 helm repo update
 ```
 
 ```bash
-helm repo add https://grafana.github.io/helm-charts
+helm repo add loki https://grafana.github.io/helm-charts
 helm repo update
 ```
 
 ```bash
-helm repo add https://grafana.github.io/helm-charts
+helm repo add promtail https://grafana.github.io/helm-charts
 helm repo update
 ```
 
 ```bash
-helm repo add https://vmware-tanzu.github.io/helm-charts
+helm repo add velero https://vmware-tanzu.github.io/helm-charts
+helm repo update
+```
+```bash
+helm repo add monitoring https://prometheus-community.github.io/helm-charts
 helm repo update
 ```
 ## Source Code
