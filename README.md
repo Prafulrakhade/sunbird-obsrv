@@ -16,7 +16,7 @@ Obsrv runs completely on a Kubernetes cluster. A completely functional Kubernete
 To create a Rancher Cluster please follow the [documentation](https://github.com/mosip/k8s-infra/blob/main/rancher/on-prem/README.md)
 
 ## Create OBSRV Cluster
-To create a OBSRV Cluster please follow the [documentation]()
+To create a OBSRV Cluster please follow the [documentation](https://github.com/mosip/k8s-infra/blob/main/mosip/on-prem/README.md)
 
 ## global configmaps
 * Update the domain name in global configmap
