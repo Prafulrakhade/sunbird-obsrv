@@ -39,7 +39,7 @@ To create a OBSRV Cluster please follow the [documentation](https://github.com/m
 ### Longhorn
 * Install [Longhorn](https://github.com/mosip/k8s-infra/blob/main/longhorn/README.md) for persistent storage. OR you can Install Longhorn from RancherUI also.
 
-### NFS
+### Install NFS in seperate node
 * Install 
 ```bash
 1  lsblk     
@@ -64,6 +64,7 @@ replace UUID as per yours in above file add below line
 
 kubectl patch storageclass nfs-client -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
 ```
+#### NOTE: run above kubectl command in local terminal not in seperate node
 
 ## Install Monitoring
 ```bash
